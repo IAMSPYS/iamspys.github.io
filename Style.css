@@ -1,0 +1,141 @@
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-bottom-color: #990000;
+    border-bottom-width: 1px;
+}
+
+.topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: justify;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+    cursor: none;
+}
+
+.topnav a:hover {
+    float: right;
+    background-color: #f2f2f2;
+    color: black;
+    text-align: justify;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topnav hl {
+    float: right;
+    background-color: black;
+    color: red;
+    text-align: justify;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.AboutmeContent,
+.HomeContent {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 46px;
+}
+
+body {
+    background-color: rgb(35, 35, 35);
+    overflow: hidden;
+}
+
+@keyframes bg-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+.AboutmeContent>.gr {
+    --GradColor1: #FE0944;
+    --GradColor2: #FEAE96;
+
+    animation: bg-pan 3s linear infinite;
+    background: linear-gradient(to right,
+            var(--GradColor1),
+            var(--GradColor2),
+            var(--GradColor1));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.bottombar {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#trailer1 {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 20px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    mix-blend-mode: difference;
+}
+
+#trailer2 {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    border-style: solid;
+    border-color: red;
+    border-width: 1px;
+}
+
+body:hover > #trailer1 {
+    opacity: 1;
+}
+
+body:hover > #trailer2 {
+    opacity: 1;
+}
+
+body:hover {
+    cursor: none;
+}
