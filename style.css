@@ -8,8 +8,8 @@
 
 .topnav a {
     float: right;
-    color: #f2f2f2;
     text-align: justify;
+    color: #f2f2f2;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 48px;
@@ -18,10 +18,8 @@
 }
 
 .topnav a:hover {
-    float: right;
     background-color: #f2f2f2;
     color: black;
-    text-align: justify;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 48px;
@@ -29,10 +27,8 @@
 }
 
 .topnav hl {
-    float: right;
     background-color: black;
     color: red;
-    text-align: justify;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 48px;
@@ -51,7 +47,8 @@
 
 body {
     background-color: rgb(35, 35, 35);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 @keyframes bg-pan {
