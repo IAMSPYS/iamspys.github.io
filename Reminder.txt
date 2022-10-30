@@ -1,0 +1,1 @@
+If pages are not working, just remember that they will work when published as GitHub pages
