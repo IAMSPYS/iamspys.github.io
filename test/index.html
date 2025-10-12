@@ -1,200 +1,555 @@
 <!DOCTYPE html>
+
 <html lang="th">
+
 <head>
+
 <meta charset="utf-8" />
+
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
 <title>แบบสอบถามตระหนักรู้เรื่อง ความรุนแรงในครอบครัว</title>
+
 <style>
+
   :root{
+
     --bg:#eaf6ff; --card:#ffffff; --primary:#0078d4; --muted:#556;
+
   }
+
   body{
+
     margin:0; font-family: "Noto Sans Thai", "Poppins", system-ui, sans-serif;
+
     background:var(--bg); color:#123; -webkit-font-smoothing:antialiased;
+
   }
+
   .wrap{max-width:900px;margin:28px auto;padding:18px;}
+
   .card{background:var(--card);border-radius:14px;box-shadow:0 6px 20px rgba(10,30,60,0.08);padding:22px;}
+
   header{text-align:center;margin-bottom:12px}
+
   h1{color:var(--primary);margin:6px 0;font-weight:600}
+
   p.lead{color:var(--muted);line-height:1.6}
+
   .page{display:none}
+
   .page.active{display:block}
+
   .btn{background:var(--primary);color:#fff;border:none;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer}
+
   .btn.ghost{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+
   .question{margin:18px 0;padding:14px;border-radius:10px;background:#f7fbff}
+
   .question p{margin:0 0 8px;font-weight:600;color:#03456a}
+
   .options label{display:block;margin:6px 0;cursor:pointer}
+
   .small{font-size:0.92rem;color:var(--muted)}
+
   .stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+
   .stat{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.04);min-width:220px}
+
   .stat .num{font-size:1.4rem;font-weight:700;color:#03456a}
+
   .logos{display:flex;gap:20px;justify-content:center;align-items:center;margin-top:20px;flex-wrap:wrap}
+
   .logos img{width:84px;height:auto;object-fit:contain;filter:grayscale(0);opacity:0.95}
+
   .share-row{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+
   .share-row a{display:inline-block;padding:8px 14px;border-radius:8px;text-decoration:none;color:#fff;font-weight:600}
+
   .fb{background:#1877f2} .x{background:#1da1f2} .line{background:#00c300} .download{background:#e1306c}
+
   footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.9rem}
+
   code{background:#f0f6ff;padding:2px 6px;border-radius:6px}
+
   @media (max-width:720px){ .stat{min-width:160px} .logos img{width:64px} }
+
 </style>
+
 </head>
+
 <body>
+
 <div class="wrap">
 
   <!-- PAGE 1 -->
+
   <div id="page1" class="page active card">
+
     <header>
+
       <h1>แบบสอบถามตระหนักรู้เรื่อง “ความรุนแรงในครอบครัว”</h1>
+
       <p class="lead">“เด็กทุกคนสมควรที่จะมีพ่อแม่ แต่ไม่ใช่พ่อแม่ทุกคนสมควรจะมีลูก”</p>
+
     </header>
 
     <p class="small">แบบสอบถามนี้ออกแบบเพื่อให้ตระหนักถึงความรุนแรงทุกรูปแบบที่อาจเกิดขึ้นในบ้าน — ทางคำพูด ทางร่างกาย ทางการเงิน ทางการควบคุม หรือการละเลย — โปรดตอบตามความจริง ไม่มีคำตอบผิด/ถูก</p>
 
     <div class="stats" style="margin-top:18px">
+
       <div class="stat">
+
         <div class="small">ครัวเรือนเด็กที่ประสบปัญหา (แบบเป็นทางการ)</div>
+
         <div id="officialNum" class="num">10,529</div>
+
       </div>
+
       <div class="stat">
+
         <div class="small">ครัวเรือนเด็กที่ประสบปัญหา (แบบไม่เป็นทางการ)</div>
+
         <div id="unofficialNum" class="num">208,015</div>
+
       </div>
+
     </div>
 
     <div style="text-align:center;margin-top:20px">
+
       <button class="btn" onclick="goTo(2)">เริ่มทำแบบสอบถาม 15 ข้อ</button>
+
       <button class="btn ghost" onclick="goTo(4)" style="margin-left:10px">ดูช่องทางช่วยเหลือ & โลโก้</button>
+
     </div>
 
     <footer style="margin-top:18px" class="small">
+
       หากสถานการณ์ฉุกเฉิน โปรดโทร <strong>191</strong> ทันที — สายด่วนสุขภาพจิต <strong>1323</strong> — ศูนย์ช่วยเหลือสังคม <strong>1300</strong>
+
     </footer>
+
   </div>
 
   <!-- PAGE 2 (QUESTIONS) -->
+
   <div id="page2" class="page card">
+
     <h2 style="text-align:center;color:var(--primary)">คำชี้แจงก่อนเริ่ม</h2>
+
     <p class="small" style="text-align:left">
+
       โปรดตอบตามความรู้สึกและสิ่งที่คุณเห็นในครอบครัวหรือสังคมรอบตัวในช่วงเวลาที่ผ่านมา การตอบแบบซื่อสัตย์จะช่วยให้ผลสรุปมีความหมายมากขึ้น  
+
       หากคุณพบว่าตัวเองหรือใครสักคนอยู่ในอันตราย ให้หยุดแบบสอบถามนี้แล้วติดต่อสายด่วนทันที (<strong>191</strong> / <strong>1323</strong>)  
+
     </p>
 
     <form id="surveyForm" style="margin-top:14px">
+
       <!-- 15 questions: choices: ใช่ บ่อยครั้ง (3) / บางครั้ง (2) / ไม่เคยเลย (1) -->
+
       <div id="qList"></div>
 
       <div style="text-align:center;margin-top:14px">
+
         <button type="button" class="btn" onclick="submitSurvey()">ส่งคำตอบและดูผล</button>
+
         <button type="button" class="btn ghost" onclick="goTo(1)" style="margin-left:10px">กลับหน้าแรก</button>
+
       </div>
+
     </form>
+
     <p class="small" style="margin-top:12px;text-align:left">
+
       หมายเหตุ: แบบสอบถามนี้เป็นเครื่องมือสร้างการตระหนักและให้คำแนะนำเบื้องต้นเท่านั้น ไม่ใช่การวินิจฉัยทางการแพทย์หรือการสอบสวนเหตุการณ์อย่างเป็นทางการ
+
     </p>
+
   </div>
 
   <!-- PAGE 3 (RESULT) -->
+
   <div id="page3" class="page card">
+
     <h2 style="text-align:center;color:var(--primary)">สรุปผลการตอบของคุณ</h2>
+
     <div id="resultSummary" class="small" style="text-align:left;white-space:pre-wrap"></div>
 
     <div class="share-row" style="margin-top:18px">
+
       <a id="fbShare" class="fb" href="#" target="_blank">แชร์ Facebook</a>
+
       <a id="xShare" class="x" href="#" target="_blank">แชร์ X</a>
+
       <a id="lineShare" class="line" href="#" target="_blank">แชร์ LINE</a>
+
       <a id="downloadImg" class="download" href="#" onclick="downloadResultImage();return false;">ดาวน์โหลดภาพ (สำหรับ IG)</a>
+
     </div>
 
     <div style="text-align:center;margin-top:18px">
+
       <button class="btn ghost" onclick="goTo(2)">ทำอีกครั้ง</button>
+
       <button class="btn" onclick="goTo(4)" style="margin-left:8px">ดูช่องทางช่วยเหลือ</button>
+
     </div>
+
   </div>
 
   <!-- PAGE 4 (HELP + LOGOS) -->
+
   <div id="page4" class="page card">
+
     <h2 style="text-align:center;color:var(--primary)">ช่องทางขอความช่วยเหลือ & ข้อมูล</h2>
+
     <p class="small" style="text-align:left;line-height:1.6">
+
       หากคุณหรือคนใกล้ชิดเผชิญกับความรุนแรงในครอบครัว โปรดติดต่อ:<br>
+
       <strong>สายด่วนสุขภาพจิต 1323</strong> (24 ชม.) • <strong>ศูนย์ช่วยเหลือสังคม 1300</strong> • <strong>แจ้งเหตุฉุกเฉิน 191</strong><br><br>
 
       เว็บไซต์แนะนำและช่วยเหลือ:<br>
+
       • กรมสุขภาพจิต: <a href="https://dmh.go.th" target="_blank">https://dmh.go.th</a><br>
+
       • UNICEF Thailand: <a href="https://www.unicef.org/thailand" target="_blank">https://www.unicef.org/thailand</a><br>
+
       • WHO: <a href="https://www.who.int" target="_blank">https://www.who.int</a><br>
+
       • UN Women (Asia-Pacific): <a href="https://asiapacific.unwomen.org" target="_blank">https://asiapacific.unwomen.org</a>
+
     </p>
 
     <div class="logos" aria-hidden="true">
+
       <!-- public logos from Wikimedia (ensure allowed) -->
+
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/UNICEF_Logo.png" alt="UNICEF logo">
+
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Emblem_of_the_Ministry_of_Public_Health_of_Thailand.svg" alt="MOPH logo">
+
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/WHO_logo.svg" alt="WHO logo">
+
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg" alt="UN logo">
+
     </div>
 
     <div style="text-align:center;margin-top:18px">
+
       <button class="btn" onclick="goTo(1)">กลับหน้าแรก</button>
+
     </div>
+
   </div>
 
   <footer style="text-align:center;margin-top:14px;color:var(--muted);font-size:0.9rem">
+
     คำเตือน: หากใครกำลังตกอยู่ในอันตรายจริง โปรดโทร 191 ทันที
+
   </footer>
+
 </div>
 
 <!-- Canvas for IG image (hidden) -->
+
 <canvas id="resultCanvas" width="1080" height="1080" style="display:none"></canvas>
 
 <script>
+
 /* -------------------------
+
    Questions list (from user)
+
    ------------------------- */
+
 const questions = [
+
   "1. คุณเคยเห็นคนในครอบครัวพูดจาดูถูกหรือประชดประชันกันจนอีกฝ่ายน้ำตาคลอหรือไม่?",
+
   "2. คุณเคยรู้สึกว่าความเงียบในบ้าน “น่ากลัว” มากกว่าคำด่าทอหรือไม่?",
+
   "3. คุณเคยรู้สึกว่าการทำตามคำสั่งคือวิธีเดียวที่จะไม่ถูกทำร้ายหรือไม่?",
+
   "4. คุณเคยเห็นผู้ใหญ่ในบ้านโยนของ ทำลายข้าวของเมื่อโมโหหรือไม่?",
+
   "5. คุณเคยรู้สึกว่าความกลัวคือส่วนหนึ่งของชีวิตประจำวันในบ้านหรือไม่?",
+
   "6. คุณเคยเห็นใครถูกตบ ตี หรือทำร้ายทางร่างกายในบ้านหรือไม่?",
+
   "7. คุณเคยเห็นคนในครอบครัวใช้อารมณ์หรือเงินควบคุมผู้อื่นหรือไม่?",
+
   "8. คุณเคยได้ยินคำพูดว่า “เรื่องในบ้านไม่ต้องให้ใครรู้” หรือไม่?",
+
   "9. คุณเคยรู้สึกอยากหนีออกจากบ้านเพราะรู้สึกไม่มีที่ปลอดภัยหรือไม่?",
+
   "10. คุณเคยเห็นใครในบ้านร้องไห้ตอนดึก ๆ แล้วแสร้งว่ายังปกติในตอนเช้าหรือไม่?",
+
   "11. คุณเคยรู้สึกว่าความรักในครอบครัวของคุณ “มีเงื่อนไข” หรือไม่?",
+
   "12. คุณเคยเห็นเด็กหรือผู้สูงอายุในบ้านถูกละเลย ไม่ได้รับการดูแลเท่าที่ควรหรือไม่?",
+
   "13. คุณเคยมีความคิดว่าความรุนแรง “เป็นเรื่องปกติของครอบครัว” หรือไม่?",
+
   "14. คุณเคยอยากช่วยใครบางคนในบ้านแต่กลัวว่าจะกลายเป็นคนผิดเองหรือไม่?",
+
   "15. คุณเชื่อหรือไม่ว่าความรุนแรง — ไม่ว่าจะเล็กน้อยแค่ไหน — จะฝากรอยแผลไว้ตลอดชีวิต?"
+
 ];
 
 /* build question elements */
+
 const qList = document.getElementById('qList');
+
 questions.forEach((txt, idx) => {
+
   const div = document.createElement('div');
+
   div.className = 'question';
+
   div.innerHTML = `<p>${txt}</p>
+
     <div class="options">
+
       <label><input type="radio" name="q${idx}" value="3"> ใช่ — บ่อยครั้ง</label>
+
       <label><input type="radio" name="q${idx}" value="2"> บางครั้ง</label>
+
       <label><input type="radio" name="q${idx}" value="1"> ไม่เคยเลย</label>
+
     </div>`;
+
   qList.appendChild(div);
+
 });
 
 /* navigation */
+
 function goTo(n){
+
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+
   document.getElementById('page'+n).classList.add('active');
+
 }
 
 /* submit survey -> compute score, summary */
+
 function submitSurvey(){
+
   const answers = [];
+
   for(let i=0;i<questions.length;i++){
+
     const checked = document.querySelector(`input[name="q${i}"]:checked`);
+
     if(!checked){ alert('กรุณาตอบทุกข้อเพื่อให้ผลสรุปแม่นยำ'); return; }
+
     answers.push(parseInt(checked.value,10));
+
   }
+
   const total = answers.reduce((a,b)=>a+b,0);
-  // count "yes" like answers (value 3 or 2) — but we will show both 
+
+  // count "yes" like answers (value 3 or 2) — but we will show both counts
+
+  const yesCount = answers.filter(v=>v>=2).length; // treat 2/3 as affirmative awareness
+
+  // build long healing summary (use the text user provided)
+
+  let summary = `คุณตอบว่า 'ใช่/บางครั้ง' จำนวน ${yesCount} ข้อ จากทั้งหมด ${questions.length} ข้อ\n\n`;
+
+  // If at least one yes:
+
+  if(yesCount >= 1){
+
+    summary += `หากคุณตอบ “ใช่” แม้เพียงข้อเดียว…\n`+
+
+      `ขอให้รู้ไว้ — คุณไม่ได้อยู่ลำพัง\n\n`+
+
+      `ความรุนแรงในครอบครัวไม่ได้จบลงเพียงในคืนนั้น มันเดินทางต่อในใจของใครบางคนทุกวัน\n`+
+
+      `และบางครั้งสิ่งที่เจ็บที่สุด… คือการที่ไม่มีใครรับฟัง\n\n`+
+
+      `โปรดอย่าทนเงียบ ไม่ว่าคุณจะเป็นเหยื่อ ผู้เห็นเหตุการณ์ หรือคนที่ยังสับสนในบทบาทของตัวเอง\n`+
+
+      `การพูดออกมาคือก้าวแรกของ “การเริ่มต้นรักษา”\n\n`+
+
+      `โทร 1323 สายด่วนสุขภาพจิต (24 ชม.)\n`+
+
+      `หรือขอความช่วยเหลือได้ที่\n\n`+
+
+      `กรมสุขภาพจิต: https://dmh.go.th\n`+
+
+      `UNICEF Thailand: https://www.unicef.org/thailand\n`+
+
+      `WHO: https://www.who.int\n`+
+
+      `UN Women: https://asiapacific.unwomen.org\n\n`+
+
+      `เพราะไม่มีใครสมควรต้องใช้ชีวิตอยู่กับความกลัวในที่ที่ควรเป็น “บ้าน”\n\n`;
+
+  } else {
+
+    summary += `คุณยังไม่ตอบ 'ใช่' ในข้อใด ๆ — นี่เป็นสัญญาณที่ดี แต่โปรดช่วยกันสอดส่องและรับฟังคนรอบตัวเสมอ\n\n`+
+
+      `ถ้าคุณพบเห็นความรุนแรง อย่าหยุดนิ่ง การยื่นมือเล็ก ๆ อาจเปลี่ยนชีวิตคนได้\n\n`+
+
+      `ช่องทางช่วยเหลือ: 1323 / 1300 / 191\n\n`+
+
+      `เว็บไซต์: https://dmh.go.th, https://www.unicef.org/thailand, https://www.who.int`;
+
+  }
+
+  // show emotionally resonant closing paragraph (long)
+
+  const touching = `\n---\nข้อความถึงคุณ:\n\n`+
+
+    `“ถ้าคืนนี้มีใครสักคนร้องไห้เงียบ ๆ ให้เงยหน้าแล้วฟัง แม้เพียงคำพูดสั้น ๆ สักประโยค — เธออาจยังมีหวัง”\n\n`+
+
+    `เราขอให้คุณอย่าละเลยเสียงที่แผ่วเบา เพราะเสียงนั้นคือการเรียกร้องความปลอดภัยและความรักที่แท้จริง\n`+
+
+    `การเริ่มต้นจากการรับฟัง อาจเป็นการเริ่มต้นของการรักษาให้ทั้งครอบครัวมีโอกาสเข้าใจกันอีกครั้ง\n`;
+
+  document.getElementById('resultSummary').innerText = summary + touching;
+
+  // prepare share links
+
+  const pageUrl = encodeURIComponent(window.location.href);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+  document.getElementById('xShare').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('ผม/ฉันเพิ่งทำแบบสอบถามเรื่องความรุนแรงในครอบครัว ลองทำเพื่อรับรู้ได้ที่นี่')}&url=${pageUrl}`;
+
+  document.getElementById('lineShare').href = `https://social-plugins.line.me/lineit/share?url=${pageUrl}`;
+
+  goTo(3);
+
+}
+
+/* random increment for official/unofficial child household counts
+
+   increase randomly by 3-8 every 12 seconds (as requested) */
+
+let official = 10529;
+
+let unofficial = 208015;
+
+document.getElementById('officialNum').innerText = official.toLocaleString();
+
+document.getElementById('unofficialNum').innerText = unofficial.toLocaleString();
+
+function incrChildStats(){
+
+  const inc1 = Math.floor(Math.random()*6) + 3; // 3..8
+
+  const inc2 = Math.floor(Math.random()*6) + 3;
+
+  official += inc1;
+
+  unofficial += inc2;
+
+  document.getElementById('officialNum').innerText = official.toLocaleString();
+
+  document.getElementById('unofficialNum').innerText = unofficial.toLocaleString();
+
+}
+
+setInterval(incrChildStats, 12000);
+
+/* DOWNLOAD IMAGE for Instagram (simple canvas with text) */
+
+function downloadResultImage(){
+
+  const canvas = document.getElementById('resultCanvas');
+
+  const ctx = canvas.getContext('2d');
+
+  // background
+
+  ctx.fillStyle = '#eaf6ff';
+
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // title
+
+  ctx.fillStyle = '#03456a';
+
+  ctx.font = 'bold 42px Noto Sans, sans-serif';
+
+  ctx.fillText('แบบสอบถามความรุนแรงในครอบครัว', 60, 80);
+
+  // main text (result)
+
+  const text = document.getElementById('resultSummary').innerText;
+
+  ctx.fillStyle = '#123';
+
+  ctx.font = '20px Noto Sans, sans-serif';
+
+  wrapText(ctx, text, 60, 130, 960, 26);
+
+  // footer
+
+  ctx.fillStyle = '#03456a';
+
+  ctx.font = '18px Noto Sans, sans-serif';
+
+  ctx.fillText('สายด่วน: 1323 | 1300 | 191', 60, 1020);
+
+  // download
+
+  const data = canvas.toDataURL('image/png');
+
+  const a = document.createElement('a'); a.href = data; a.download = 'family_violence_result.png'; a.click();
+
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+
+  const words = text.split(' ');
+
+  let line = '';
+
+  for(let n=0;n<words.length;n++){
+
+    const testLine = line + words[n] + ' ';
+
+    const metrics = ctx.measureText(testLine);
+
+    if(metrics.width > maxWidth && n > 0){
+
+      ctx.fillText(line, x, y);
+
+      line = words[n] + ' ';
+
+      y += lineHeight;
+
+    } else {
+
+      line = testLine;
+
+    }
+
+  }
+
+  ctx.fillText(line, x, y);
+
+}
+
+/* simple share placeholder for download button */
+
+document.getElementById('downloadImg').addEventListener('click',(e)=>{ e.preventDefault(); downloadResultImage(); });
+
+/* init: ensure page1 active */
+
+goTo(1);
+
+</script>
+
+</body>
+
+</html>
