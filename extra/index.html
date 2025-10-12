@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คุณกำลังมีปัญหาด้านสุขภาพจิตอยู่หรือไม่?</title>
+<style>
+  body {
+    font-family: 'Noto Sans Thai', sans-serif;
+    background-color: #e6f3ff;
+    color: #222;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    display: none;
+    padding: 40px;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .active {
+    display: block;
+  }
+
+  h1 {
+    font-size: 2.4em;
+    text-align: center;
+    color: #005b96;
+  }
+
+  h2 {
+    color: #0066cc;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .question {
+    margin: 25px 0;
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  .stats {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 30px;
+  }
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .logos img {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .share-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .share-buttons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .result {
+    white-space: pre-line;
+    line-height: 1.8;
+    font-size: 1.1em;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<div id="page1" class="page active">
+  <h1>คุณกำลังมีปัญหาด้านสุขภาพจิตอยู่หรือไม่?</h1>
+  <p style="text-align:center;">การรับรู้ปัญหาของตนเอง คือก้าวแรกของการเยียวยา ❤️</p>
+  <div class="stats">
+    <p>🌍 ผู้คนทั่วโลกที่ประสบปัญหาสุขภาพจิต: <span id="worldCount">301,860,001</span></p>
+    <p>🇹🇭 คนไทยที่ประสบปัญหาสุขภาพจิต: <span id="thaiCount">2,901,880</span></p>
+  </div>
+  <button onclick="nextPage(2)">เริ่มทำแบบประเมิน</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="page">
+  <h2>คำชี้แจง</h2>
+  <p>
+  แบบสอบถามนี้จัดทำขึ้นเพื่อช่วยให้คุณสำรวจและตระหนักถึงภาวะทางอารมณ์และจิตใจของตนเอง  
+  ไม่ใช่เพื่อการวินิจฉัยโรค แต่เพื่อเป็น “กระจกสะท้อนใจ” ให้คุณได้มองเห็นตนเองอย่างอ่อนโยน  
+  โปรดตอบคำถามตามความรู้สึกจริงของคุณในช่วง 2 สัปดาห์ที่ผ่านมา โดยไม่มีคำตอบใดถูกหรือผิด  
+  ทุกคำตอบของคุณมีความหมาย และทุกความรู้สึกของคุณนั้นสำคัญ 💙
+  </p>
+
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="button" onclick="calculateResult()">ดูผลลัพธ์</button>
+  </form>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+  <h2>ผลการประเมินสุขภาพจิตของคุณ</h2>
+  <div id="resultText" class="result"></div>
+
+  <div class="share-buttons">
+    <p>แชร์ผลของคุณบนโซเชียล:</p>
+    <a id="shareFB" target="_blank">Facebook</a> |
+    <a id="shareTW" target="_blank">Twitter</a> |
+    <a id="shareIG" target="_blank">Instagram</a>
+  </div>
+
+  <h3>แหล่งช่วยเหลือด้านสุขภาพจิต</h3>
+  <ul>
+    <li><a href="https://www.unicef.org/thailand/th" target="_blank">UNICEF Thailand</a></li>
+    <li><a href="https://www.who.int/" target="_blank">องค์การอนามัยโลก (WHO)</a></li>
+    <li><a href="https://www.moph.go.th/" target="_blank">กระทรวงสาธารณสุข</a></li>
+    <li><a href="https://dmh.go.th/" target="_blank">กรมสุขภาพจิต</a></li>
+  </ul>
+  <p>สายด่วนสุขภาพจิต โทร. <strong>1323</strong> (24 ชั่วโมง)</p>
+
+  <div class="logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/UNICEF_Logo.png" alt="UNICEF">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Emblem_of_the_Ministry_of_Public_Health_of_Thailand.svg" alt="MOPH">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/WHO_logo.svg" alt="WHO">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg" alt="UN">
+  </div>
+</div>
+
+<script>
+const questions = [
+  "1. ในช่วง 2 สัปดาห์ที่ผ่านมา คุณรู้สึกเหนื่อยล้า หรือหมดแรงโดยไม่มีสาเหตุชัดเจนบ่อยแค่ไหน?",
+  "2. คุณรู้สึกเศร้า เหงา หรือเหมือนไม่มีคุณค่าในตัวเองบ่อยไหม?",
+  "3. คุณรู้สึกไม่อยากทำอะไรเลย ทั้งที่เมื่อก่อนเคยชอบไหม?",
+  "4. คุณนอนหลับยาก ตื่นกลางดึก หรือหลับนานเกินไปหรือไม่?",
+  "5. คุณมีความคิดเกี่ยวกับการทำร้ายตัวเองหรือไม่อยากมีชีวิตอยู่หรือไม่?",
+  "6. คุณรู้สึกว่าตัวเองเป็นภาระของคนอื่นไหม?",
+  "7. คุณรู้สึกวิตกกังวลหรือกลัวสิ่งที่ยังไม่เกิดขึ้นบ่อยไหม?",
+  "8. คุณหงุดหงิดง่าย หรืออารมณ์แปรปรวนโดยไม่ทราบสาเหตุไหม?",
+  "9. คุณมีปัญหาในการจดจ่อหรือคิดตัดสินใจเรื่องเล็ก ๆ น้อย ๆ หรือไม่?",
+  "10. คุณรู้สึกว่าคุณไม่ได้เป็นตัวของตัวเอง หรือเหมือนอยู่ในโลกที่ไม่จริงไหม?",
+  "11. คุณรู้สึกโดดเดี่ยว แม้อยู่ท่ามกลางผู้คนไหม?",
+  "12. คุณรู้สึกเหมือนกำลังหลงทางในชีวิต หรือไม่รู้ว่าตัวเองต้องการอะไรไหม?",
+  "13. คุณรู้สึกผิดในสิ่งที่ไม่ได้ทำ หรือโทษตัวเองในเรื่องที่ผ่านมาไหม?",
+  "14. คุณรู้สึกว่าการใช้ชีวิตประจำวันกลายเป็นเรื่องยากขึ้นหรือไม่?",
+  "15. คุณเคยร้องไห้โดยไม่มีเหตุผล หรือรู้สึกอยากร้องแต่ไม่มีน้ำตาไหม?"
+];
+
+const container = document.getElementById("questions");
+questions.forEach((q, i) => {
+  const div = document.createElement("div");
+  div.classList.add("question");
+  div.innerHTML = `
+    <p>${q}</p>
+    <label><input type="radio" name="q${i}" value="0">ไม่เลย</label><br>
+    <label><input type="radio" name="q${i}" value="1">บางวัน</label><br>
+    <label><input type="radio" name="q${i}" value="2">บ่อยครั้ง</label><br>
+    <label><input type="radio" name="q${i}" value="3">เกือบทุกวัน</label>
+  `;
+  container.appendChild(div);
+});
+
+function nextPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(`page${n}`).classList.add('active');
+}
+
+function calculateResult() {
+  const answers = [...document.querySelectorAll('input[type="radio"]:checked')].map(i => +i.value);
+  if (answers.length < questions.length) return alert("กรุณาตอบคำถามให้ครบทุกข้อ");
+  const score = answers.reduce((a,b) => a+b, 0);
+  let level, message;
+
+  if (score <= 10) {
+    level = "ปกติ";
+    message = "คุณยังคงมีจิตใจที่มั่นคงและแข็งแรง แม้จะมีวันที่เหนื่อยบ้าง แต่คุณยังมีแสงสว่างในใจ ขอให้คุณยังคงดูแลตัวเองต่อไป อย่าลืมพักผ่อน ยิ้มให้ตัวเอง และขอบคุณหัวใจของคุณที่ยังสู้ทุกวัน 💙";
+  } else if (score <= 25) {
+    level = "เริ่มมีความเครียดหรือภาวะซึมเศร้าเล็กน้อย";
+    message = "บางครั้งคุณอาจรู้สึกเหนื่อยโดยไม่รู้สาเหตุ แต่โปรดจำไว้ว่าความรู้สึกเหล่านั้นไม่ได้ทำให้คุณอ่อนแอ มันแปลว่าคุณยังรู้สึก ยังมีหัวใจ ยังมีความเป็นมนุษย์ ขอให้คุณกอดตัวเองแน่น ๆ และอย่าลืมว่าคุณไม่จำเป็นต้องผ่านทุกอย่างไปคนเดียว 🌤️";
+  } else if (score <= 35) {
+    level = "มีความเครียดหรือซึมเศร้าปานกลาง";
+    message = "คุณอาจกำลังอยู่ในช่วงที่ทุกอย่างดูหนักและพร่ามัวไปหมด เหมือนเดินอยู่ในหมอกที่หนาแน่น แต่ขอให้คุณรู้ไว้ว่ามีคนที่อยากเห็นคุณยิ้มได้อีกครั้ง มีคนที่รักคุณมากกว่าที่คุณคิด และวันหนึ่งคุณจะผ่านมันไปได้ ขอเพียงคุณไม่ยอมแพ้ 💔";
+  } else {
+    level = "มีความเสี่ยงสูงต่อภาวะซึมเศร้ารุนแรง";
+    message = "คุณอาจกำลังเจ็บปวดอย่างเงียบ ๆ และไม่มีใครได้ยินเสียงนั้น แต่ขอให้รู้ไว้ว่า ‘คุณมีคุณค่า’ และ ‘คุณไม่ควรอยู่คนเดียว’ โปรดโทรหาสายด่วนสุขภาพจิต 1323 หรือพูดคุยกับคนที่คุณไว้ใจ ขอให้คุณให้โอกาสตัวเองได้มีวันพรุ่งนี้อีกวัน คุณยังมีทางกลับมา มีวันที่หัวใจคุณจะอบอุ่นอีกครั้ง แม้ว่าวันนี้มันจะมืดมนเพียงใดก็ตาม 💙";
+  }
+
+  document.getElementById("resultText").innerText = `ระดับสุขภาพจิตของคุณ: ${level}\n\n${message}`;
+  nextPage(3);
+}
+
+// Randomized real-time counters
+let world = 301860001;
+let thai = 2901880;
+
+function randomIncrement(max) {
+  return Math.floor(Math.random() * max) + 1;
+}
+
+setInterval(() => {
+  world += randomIncrement(450);
+  thai += randomIncrement(26);
+  document.getElementById("worldCount").innerText = world.toLocaleString();
+  document.getElementById("thaiCount").innerText = thai.toLocaleString();
+}, 12000);
+
+// Share links
+const url = encodeURIComponent(window.location.href);
+document.getElementById("shareFB").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+document.getElementById("shareTW").href = `https://twitter.com/intent/tweet?text=ฉันลองทำแบบประเมินสุขภาพจิตแล้ว!&url=${url}`;
+document.getElementById("shareIG").href = `https://www.instagram.com/`;
+</script>
+
+</body>
+</html>
